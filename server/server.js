@@ -20,5 +20,13 @@ const sqlite3 = require("sqlite3").verbose()
 
 server.get("/users", (req, res) => {
     const db = new sqlite3.Database("./gik339-labb2.db");
-
+    const sql = "SELECT * FROM users";
+    db.all(sql, (err, rows) => {
+        if (err) {
+          res.status(500).send(err);
+        } else {
+          res.send(rows);
+        }
+      });
+      db.close();
 });
