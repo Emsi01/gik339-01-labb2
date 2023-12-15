@@ -1,9 +1,12 @@
 
-const url = 'http://localhost:3000/users';
-const responsePromise = fetch(url);
+const url = 'http://localhost:3000';
 
-responsePromise.then((response) => {
-    console.log(response);
-    return response.json();
-})
-.then((users) => console.log(users));
+document.createElement(ul)
+
+fetch(url + '/users')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      data.forEach(user => {
+      })
+});

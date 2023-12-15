@@ -18,6 +18,15 @@ server.listen(3000, () => {
 
 const sqlite3 = require("sqlite3").verbose()
 
+server.post("/users", (req, res) => {
+  console.log(req.body); 
+
+  res.send({
+      success:true, 
+      success: "Funkar"
+  });
+});
+
 server.get("/users", (req, res) => {
     const db = new sqlite3.Database("./gik339-labb2.db");
     const sql = "SELECT * FROM users";
@@ -25,8 +34,9 @@ server.get("/users", (req, res) => {
         if (err) {
           res.status(500).send(err);
         } else {
-          res.send(rows);
+          res.send(rows)
+          console.log(rows)
         }
       });
-      db.close();
+      return;
 });
